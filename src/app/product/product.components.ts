@@ -23,10 +23,15 @@ export class ProductComponent implements OnInit, OnChanges, OnDestroy {
     @Input() product: Product;
     @Output() productClicked: EventEmitter<any> = new EventEmitter();
 
+
+    today = new Date();
+
     constructor(){
         this.product = {};
         console.log('constructor');
+
     }
+    
 
     ngOnChanges(changes: SimpleChanges){
         // Deteccion Automatica de cambios

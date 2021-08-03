@@ -1,0 +1,17 @@
+:host{
+    margin: 2px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: block;
+}
+
+img {
+    max-width: 100%;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); // nos hará breakpoints cada 300px
+  }
+  
+  
