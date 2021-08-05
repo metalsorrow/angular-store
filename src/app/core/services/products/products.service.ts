@@ -10,7 +10,6 @@ export class ProductsService {
 
 
   constructor() {
-
     this.products = [
       {
         id: "1",
@@ -45,7 +44,6 @@ export class ProductsService {
       },
 
     ]
-
   }
 
   getAllProducts() {
