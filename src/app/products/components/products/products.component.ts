@@ -18,9 +18,18 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this. products = this._products.getAllProducts();
+    this.fetchProducts();
   }
 
+  fetchProducts(){
+    this._products.getAllProducts().subscribe(
+      (res: Product[] ) => {
+        this.products = res;
+    },
+      (err: any) => {
+      
+    });
+  }
 
   clickProudct(id: string) {
     console.log(`product: ${id}`);

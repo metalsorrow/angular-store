@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Product } from 'src/models/product.model';
 
 @Injectable({
@@ -6,53 +9,30 @@ import { Product } from 'src/models/product.model';
 })
 export class ProductsService {
 
-  products: Array<Product>;
+  constructor(
+    private _http: HttpClient
+  ) {
 
-
-  constructor() {
-    this.products = [
-      {
-        id: "1",
-        image: 'assets/images/camiseta.png',
-        title: 'Camiseta',
-        price: 80000,
-        description: 'bla bla bla bla'
-      },
-
-      {
-        id: "2",
-        image: 'assets/images/camiseta.png',
-        title: 'Camiseta',
-        price: 80000,
-        description: 'bla bla bla bla'
-      },
-
-      {
-        id: "3",
-        image: 'assets/images/camiseta.png',
-        title: 'Camiseta',
-        price: 80000,
-        description: 'bla bla bla bla'
-      },
-
-      {
-        id: "4",
-        image: 'assets/images/camiseta.png',
-        title: 'Camiseta',
-        price: 80000,
-        description: 'bla bla bla bla'
-      },
-
-    ]
   }
 
-  getAllProducts() {
-    return this.products;
+  getAllProducts(): Observable<Product[]> {
+    return this._http.get<Product[]>(`${environment.url_api}/products/`);
   }
 
-  getProduct(id: string): Product {
-    return <Product>this.products.find(item =>  id === item.id);
+  getProduct(id: string): Observable<Product> {
+    return this._http.get<Product>(`${environment.url_api}/products/${id}`);
   }
 
+  createProduct(product: Product): Observable<Product> {
+    return this._http.post(`${environment.url_api}/products`, product);
+  }
+
+  updateProduct(id: string,changes: Partial<Product>): Observable<Product> {
+    return this._http.put(`${environment.url_api}/products/${id}`, changes);
+  }
+
+  deleteProduct(id: string): Observable<Product> {
+    return this._http.delete(`${environment.url_api}/products/${id}`);
+  }
 
 }
