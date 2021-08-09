@@ -6,6 +6,7 @@ import { ExponentialPipe } from './pipes/exponentials/exponential.pipe';
 import { HighlightDirective } from './directives/highlight/highlight.directive';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -26,7 +27,8 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
